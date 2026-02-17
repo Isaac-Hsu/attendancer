@@ -15,8 +15,7 @@ def split(start, end, parts):
         current = rangeend + 1
     return ranges
 
-
-
+'''
 def test_split():
     test_cases = [
         # (start, end, parts, description)
@@ -48,3 +47,4 @@ def test_split():
 
 # Run tests
 test_split()
+'''

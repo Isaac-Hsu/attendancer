@@ -99,7 +99,7 @@ def detectwords(search_words, debug=False):
                 # check for target words
                 for target in search_words:
                     if word.lower() == target.lower():
-                        coord = (x + w / 2, y + h / 2)
+                        coord = (x + w / 2 - 20, y + h / 2)
                         
                         # Check for duplicates within 50 pixels
                         duplicate = False
@@ -129,4 +129,4 @@ def detectwords(search_words, debug=False):
     for coords in results.values():
         all_coords.extend(coords)
     
-    return len(all_coords), all_coords
+    return all_coords
