@@ -41,5 +41,5 @@ def parallelprocess(coords, start=100, end=999):
             executor.submit(process_range, coord, r_start, r_end)
             
 #coords = detectwords(search_words = ["Submit"], debug=True)
-coords = detect_image("submit.png")
+coords = detect("submit.png")
 parallelprocess(coords)
