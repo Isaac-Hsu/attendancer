@@ -1,4 +1,4 @@
-from textdetect import detectwords
+from imagedetect import detect
 from split import split
 import time
 import pyautogui
@@ -20,17 +20,17 @@ lock = threading.Lock()
 
 def input(coord, number):
     with lock:  # Ensure only one thread controls mouse/keyboard at a time
-        pyautogui.click(coord[0], coord[1])
+        pyautogui.click(coord[0] - 20, coord[1])
         time.sleep(0.1)
         pyautogui.write(str(number))
         pyautogui.press('enter')
-        time.sleep(0.1)
+        time.sleep(0.5)
         
 def process_range(coord, start, end):
     for number in range(start, end + 1):
         input(coord, number)
         
-def parallelprocess(coords, start=100, end=120):
+def parallelprocess(coords, start=100, end=999):
     print("Starting in 2.5s")
     time.sleep(2.5)
     
@@ -40,5 +40,6 @@ def parallelprocess(coords, start=100, end=120):
         for coord, (r_start, r_end) in zip(coords, ranges):
             executor.submit(process_range, coord, r_start, r_end)
             
-coords = detectwords(search_words = ["Submit"])
+#coords = detectwords(search_words = ["Submit"], debug=True)
+coords = detect_image("submit.png")
 parallelprocess(coords)
